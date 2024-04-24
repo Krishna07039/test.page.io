@@ -1,0 +1,66 @@
+//third
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Zoom and Redirect</title>
+<style>
+  /* Styles for the image container */
+  .image-container {
+    width: 300px; /* Adjust as needed */
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Styles for the image */
+  .image-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Styles for the zoomed-in image */
+  .zoomed {
+    transform: scale(2); /* Adjust the zoom level as needed */
+  }
+</style>
+</head>
+<body>
+
+<div class="image-container" id="image-container">
+  <img src="/testhome.png" alt="Image" id="image">
+</div>
+
+<script>
+// Get the image container and image element
+var container = document.getElementById("image-container");
+var image = document.getElementById("image");
+
+// Boolean flag to track if the image is zoomed
+var isZoomed = false;
+
+// Function to zoom in the image
+function zoomImage() {
+  // Toggle zoom class
+  container.classList.toggle("zoomed");
+  isZoomed = !isZoomed;
+  
+  // Check if the image is zoomed
+  if (isZoomed) {
+    // Redirect to another application after 2 seconds (adjust as needed)
+    setTimeout(function() {
+      window.location.href = "http://localhost:4200/"; // Change to your desired URL
+    }, 2000);
+  }
+}
+
+// Add event listener to zoom the image on double click
+image.addEventListener("dblclick", zoomImage);
+</script>
+
+</body>
+</html>
